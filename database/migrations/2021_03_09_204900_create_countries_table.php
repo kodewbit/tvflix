@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateCountriesTable extends Migration
 {
     /**
      * Table name.
      *
      * @var string
      */
-    public $table = 'users';
+    public $table = 'countries';
 
     /**
      * Run the migrations.
@@ -22,11 +22,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('name')->unique();
+            $table->string('code', 2)->unique();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

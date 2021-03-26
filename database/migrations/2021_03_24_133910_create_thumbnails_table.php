@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateThumbnailsTable extends Migration
 {
     /**
-     * Table name.
+     * Table name
      *
      * @var string
      */
-    public $table = 'users';
+    private $table = 'thumbnails';
 
     /**
      * Run the migrations.
@@ -22,11 +22,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->text('url');
+            $table->string('size');
+            $table->integer('width');
+            $table->integer('height');
+            $table->unsignedBigInteger('thumbnailable_id');
+            $table->string('thumbnailable_type');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

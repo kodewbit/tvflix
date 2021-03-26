@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Models;
+
+use App\Scopes\ExcludeEmptyCountries;
+use App\Scopes\ExcludeInactive;
+use App\Scopes\SortDescending;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Kodewbit\Meteor\Filterable;
+
+/**
+ * Class Channel
+ *
+ * @package App\Models
+ * @mixin Builder
+ */
+class Country extends Model
+{
+    use HasFactory, Filterable;
+
+    /**
+     * @inheritdoc
+     *
+     * @var string[]
+     */
+    protected $guarded = [
+        'id',
+    ];
+
+    /**
+     * @inheritdoc
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'name',
+        'active'
+    ];
+
+    /**
+     * @inheritdoc
+     *
+     * @var array[]
+     */
+    protected $relations = [
+        'channels',
+    ];
+
+    /**
+     * @inheritdoc
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new ExcludeInactive());
+        static::addGlobalScope(new ExcludeEmptyCountries());
+    }
+
+    /**
+     * Channels relationship.
+     *
+     * @return HasMany
+     */
+    public function channels()
+    {
+        return $this->hasMany(Channel::class);
+    }
+}

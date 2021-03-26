@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateChannelsTable extends Migration
 {
     /**
      * Table name.
      *
      * @var string
      */
-    public $table = 'users';
+    public $table = 'channels';
 
     /**
      * Run the migrations.
@@ -22,12 +22,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->text('name')->nullable();
+            $table->text('description')->nullable();
+            $table->text('url');
+            $table->string('identifier')->unique();
+            $table->unsignedBigInteger('country_id');
+            $table->boolean('active')->default(true);
             $table->timestamps();
+
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->cascadeOnDelete();
         });
     }
 

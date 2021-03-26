@@ -1,6 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\ChannelController;
+use App\Http\Controllers\API\CountryController;
+use App\Http\Controllers\API\StatsController;
+use App\Http\Controllers\API\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +18,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'stats'], function () {
+    Route::get('/', [StatsController::class, 'index']);
+});
+
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('/', [CategoryController::class, 'index']);
+    Route::get('/{id}', [CategoryController::class, 'show']);
+});
+
+Route::group(['prefix' => 'countries'], function () {
+    Route::get('/', [CountryController::class, 'index']);
+    Route::get('/{id}', [CountryController::class, 'show']);
+});
+
+Route::group(['prefix' => 'channels'], function () {
+    Route::get('/', [ChannelController::class, 'index']);
+    Route::get('/{id}', [ChannelController::class, 'show']);
+});
+
+Route::group(['prefix' => 'videos'], function () {
+    Route::get('/', [VideoController::class, 'index']);
+    Route::get('/{id}', [VideoController::class, 'show']);
 });
