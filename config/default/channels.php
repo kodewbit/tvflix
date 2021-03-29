@@ -10,7 +10,7 @@ return [
         'country' => 'US',
         'categories' => [2]
     ], [
-        'url' => 'https://www.youtube.com/channel/UCuiLR4p6wQ3xLEm15pEn1Xw',
+        'url' => 'https://www.youtube.com/channel/UCvdwhh_fDyWccR42-rReZLw',
         'country' => 'BR',
         'categories' => [2]
     ], [
@@ -381,5 +381,21 @@ return [
         'url' => 'https://www.youtube.com/channel/UC64ZNqX0FQHabP8iIkmnR3A',
         'country' => 'AR',
         'categories' => [2]
+    ], [
+        'url' => 'https://www.youtube.com/channel/UCuiLR4p6wQ3xLEm15pEn1Xw',
+        'country' => 'BR',
+        'categories' => [2]
+    ], [
+        'url' => 'https://www.youtube.com/channel/UCvbTYgbzLcCginSC03fhmwg',
+        'country' => 'ES',
+        'categories' => [7]
+    ], [
+        'url' => 'https://www.youtube.com/channel/UCEw4oyJKvmYPoIpSa8cfr7A',
+        'country' => 'ES',
+        'categories' => [7]
+    ], [
+        'url' => 'https://www.youtube.com/channel/UCsA_vkmuyIRlYYXeJueyIJQ',
+        'country' => 'RU',
+        'categories' => [4]
     ]
 ];
