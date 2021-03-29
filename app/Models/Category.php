@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\ExcludeEmptyCategories;
 use App\Scopes\ExcludeInactive;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -57,6 +58,7 @@ class Category extends Model
         parent::boot();
 
         static::addGlobalScope(new ExcludeInactive());
+        static::addGlobalScope(new ExcludeEmptyCategories());
     }
 
     /**
