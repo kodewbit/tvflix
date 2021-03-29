@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(UpdateChannelInfoCommand::class)->monthly();
-        $schedule->command(UpdateChannelVideosCommand::class)->dailyAt('12:00');
+        $schedule->command(UpdateChannelVideosCommand::class)->dailyAt(env('TVFLIX_UPDATE_VIDEOS', '09:00'));
     }
 
     /**
