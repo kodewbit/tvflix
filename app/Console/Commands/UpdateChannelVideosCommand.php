@@ -52,7 +52,6 @@ class UpdateChannelVideosCommand extends Command
 
             foreach ($videos as $video) {
                 $videoReference = $channel->videos()->updateOrCreate([
-                    'name' => $video->snippet->title,
                     'channel_id' => $channel->id,
                     'identifier' => $video->id->videoId,
                 ], [
