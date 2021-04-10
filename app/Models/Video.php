@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Scopes\ExcludeInactive;
-use App\Scopes\SortDescending;
+use App\Scopes\SortVideosDescending;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -65,7 +65,7 @@ class Video extends Model
         parent::boot();
 
         static::addGlobalScope(new ExcludeInactive());
-        static::addGlobalScope(new SortDescending('published'));
+        static::addGlobalScope(new SortVideosDescending());
     }
 
     /**

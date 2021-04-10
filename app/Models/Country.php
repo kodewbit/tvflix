@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Scopes\ExcludeEmptyCountries;
 use App\Scopes\ExcludeInactive;
-use App\Scopes\SortDescending;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
