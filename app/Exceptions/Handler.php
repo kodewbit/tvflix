@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
@@ -61,6 +62,10 @@ class Handler extends ExceptionHandler
 
             if ($e instanceof ModelNotFoundException) {
                 return response()->json(['error' => 'Sorry, no data found.'], Response::HTTP_NOT_FOUND);
+            }
+
+            if ($e instanceof Exception) {
+                return response()->json(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         }
 
